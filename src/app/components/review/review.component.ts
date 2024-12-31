@@ -25,7 +25,8 @@ export class ReviewComponent implements OnInit {
       this.packageCost = params['totalCost'];
       this.location = params['location'];
       this.id = params['id'];
-      this.image = params['image']
+      this.image = params['image'];
+      this.guestCount = params['guestCount'];
     });
   }
 
