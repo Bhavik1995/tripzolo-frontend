@@ -25,7 +25,7 @@ export class DetailsComponent implements OnInit {
   }
 
   fetchPackageDetails(id: number) {
-    const apiUrl = `http://localhost:5000/api/packages/${id}`;
+    const apiUrl = `https://tripzolo-backend.vercel.app/api/packages/${id}`;
     this.http.get(apiUrl).subscribe((data: any) => {
       this.package = data;
       console.log(this.package)

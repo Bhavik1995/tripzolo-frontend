@@ -7,7 +7,7 @@ import { map, Observable } from 'rxjs';
 })
 export class CityService {
 
-  private apiUrl = 'http://localhost:5000/api/packages';
+  private apiUrl = 'https://tripzolo-backend.vercel.app/api/packages';
 
   constructor(private http: HttpClient) { }
 

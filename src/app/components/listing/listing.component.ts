@@ -22,7 +22,7 @@ export class ListingComponent implements OnInit {
   }
 
   fetchPackages() {
-    const apiUrl = `http://localhost:5000/api/packages`;
+    const apiUrl = `https://tripzolo-backend.vercel.app/api/packages`;
     let params = new HttpParams();
     if (this.location) {
       params = params.set('city', this.location);
