@@ -1,0 +1,104 @@
+<div class="container-fluid bg-light py-3">
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <form class="row g-3" [formGroup]="searchForm" (ngSubmit)="onSearch()">
+          <div class="col-md-4 position-relative">
+            <label for="fromCity" class="form-label">Search City</label>
+            <input
+              type="text"
+              id="searchCity"
+              class="form-control"
+              placeholder="New Delhi"
+              formControlName="location"
+              
+            />
+            <ul
+              *ngIf="cities && cities.length > 0"
+              class="dropdown-menu show"
+              style="width: 100%; position: absolute; z-index: 1050;"
+            >
+              <li
+                *ngFor="let city of cities"
+                class="dropdown-item"
+             
+              >
+                {{ city }}
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-4">
+            <label for="departureDate" class="form-label">Departure Date</label>
+            <input
+              type="date"
+              id="departureDate"
+              class="form-control"
+            />
+          </div>
+
+          <!-- Additional Options -->
+      
+          <div class="col-md-6 d-flex align-items-center mt-4">
+            <div class="form-check me-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="nonStopFlights"
+               
+              />
+              <label class="form-check-label" for="nonStopFlights">
+                Non-Stop Flights
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="specialDiscount"
+              
+              />
+              <label class="form-check-label" for="specialDiscount">
+                Special Discounts
+              </label>
+            </div>
+          </div>
+
+          <!-- Search Button -->
+          <div class="col-md-12">
+            <button type="submit" class="btn w-100 submit_button">Search</button>
+          </div>
+        </form>      
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <h3 class="mb-3">Trending destinations</h3>
+  <p class="text-muted">Most popular choices for travelers from India</p>
+  <div class="row">
+    <div class="col-md-4 col-sm-6 mb-4" *ngFor="let destination of destinations">
+      <div class="card bg-dark text-white border-0">
+        <img
+          [src]="destination.image"
+          class="card-img"
+          alt="{{ destination.name }}"
+          style="height: 200px; object-fit: cover;"
+        />
+        <div class="card-img-overlay d-flex align-items-end">
+          <h5 class="card-title fw-bold text-white">
+            {{ destination.name }}
+            <img
+              src="assets/images/indian-flag.png"
+              alt="India Flag"
+              style="width: 20px; height: 15px; margin-left: 5px;"
+            />
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

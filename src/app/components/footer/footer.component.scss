@@ -1,0 +1,42 @@
+.footer {
+    border-top: 1px solid #ddd;
+  }
+  
+  .footer h6 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .footer ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .footer ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer .row {
+    margin-bottom: 1rem;
+  }
+
+  .footer-section{
+    background-color: black;
+  }
+
+  .img-fluid{
+    height: 50px;
+    width: 150px;
+  }
+  
+  @media (max-width: 768px) {
+    .footer h6 {
+      font-size: 0.9rem;
+    }
+  }
+  

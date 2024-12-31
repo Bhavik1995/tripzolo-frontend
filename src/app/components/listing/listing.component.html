@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="listing-section">
+    <div class="container py-4">
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4" *ngFor="let package of packages">
+          <div class="card">
+            <div class="image-container">
+              <img src="{{package.image}}" class="card-img-top" alt="image">
+            </div>
+            <div class="card-body">
+              <div class="package_details">
+                <h3 class="package_heading">{{package.name}}</h3>
+                <div class="days-box">{{package.duration}}</div>
+              </div>
+              <div class="card-border"></div>
+
+              <div class="package_benifits">
+                <div class="left_side">
+                  <ul>
+                    <li *ngFor="let benefit of package.benefits.leftSide">
+                      {{ benefit }}
+                    </li>
+                  </ul>
+                </div>
+                <div class="right_side">
+                  <ul>
+                    <li *ngFor="let benefit of package.benefits.rightSide">
+                      {{ benefit }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="price_section">
+                <div class="package_price">
+                  <div class="emi_section">
+                    <p>
+                      No Cost EMI at <br />
+                      ₹{{ package.price.emi | number: '1.0-0' }}
+                    </p>
+                  </div>
+                  <div class="person_price">
+                    <p>
+                      ₹{{ package.price.perPerson | number: '1.0-0' }}/Person
+                      <br />
+                      Total Price ₹{{ package.price.totalPrice | number: '1.0-0' }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="view_details">
+                <button
+                  class="submit_button"
+                  (click)="viewDetails(package.id)"
+                >
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
