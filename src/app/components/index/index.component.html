@@ -25,6 +25,18 @@
                 {{ city }}
               </li>
             </ul>
+
+            <!-- <ul *ngIf="cities && cities.length > 0" class="dropdown-menu" style="width: 100%; position: absolute; z-index: 1050;">
+              <li class="dropdown-item">
+                No cities found
+              </li>
+            </ul> -->
+
+            <ul *ngIf="loading" class="dropdown-menu" style="width: 100%; position: absolute; z-index: 1050;">
+              <li class="dropdown-item">
+                Loading...
+              </li>
+            </ul>
           </div>
 
           <div class="col-md-4">

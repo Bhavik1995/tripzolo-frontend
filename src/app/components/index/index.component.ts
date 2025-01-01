@@ -14,6 +14,7 @@ export class IndexComponent implements OnInit {
   searchForm!: FormGroup;
   cities: string[] = [];
   packages: any;
+  loading: boolean = false;
 
   destinations = [
     {
@@ -59,6 +60,7 @@ export class IndexComponent implements OnInit {
         debounceTime(300), 
         distinctUntilChanged(), 
         switchMap((value) => {
+          this.loading = true;
           return value ? this.cityService.getCities(value) : of([]); 
         })
       )
@@ -66,9 +68,11 @@ export class IndexComponent implements OnInit {
         next: (cities) => {
           const searchTerm = this.searchForm.get('location')!.value.toLowerCase();
           this.cities = cities.filter(city => city.toLowerCase().includes(searchTerm));
+          this.loading = false;
         },
         error: (err) => {
           console.error("Error fetching cities:", err);
+          this.loading = false;
         },
       });
   }
