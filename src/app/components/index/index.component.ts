@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router'
 import { debounceTime, distinctUntilChanged, map, Observable, of, startWith, switchMap } from 'rxjs';
@@ -38,7 +38,7 @@ export class IndexComponent implements OnInit {
     }
   ];
 
-  constructor(private fb: FormBuilder, private router: Router, private cityService: CityService) { }
+  constructor(private fb: FormBuilder, private router: Router, private cityService: CityService,private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.createForm();
@@ -52,41 +52,47 @@ export class IndexComponent implements OnInit {
     });
   }
 
+
   setupCitySearch() {
     this.searchForm.get('location')!.valueChanges
       .pipe(
-        debounceTime(300), // Wait for the user to stop typing for 300ms
-        distinctUntilChanged(), // Avoid duplicate calls
-        switchMap((value) =>
-          value ? this.cityService.getCities(value) : of([])  // Return an empty array if no value is provided
-        )
+        debounceTime(300), 
+        distinctUntilChanged(), 
+        switchMap((value) => {
+          return value ? this.cityService.getCities(value) : of([]); 
+        })
       )
-      .subscribe((cities) => {
-        this.cities = cities;
+      .subscribe({
+        next: (cities) => {
+          const searchTerm = this.searchForm.get('location')!.value.toLowerCase();
+          this.cities = cities.filter(city => city.toLowerCase().includes(searchTerm));
+        },
+        error: (err) => {
+          console.error("Error fetching cities:", err);
+        },
       });
   }
-
+  
   onCitySearch() {
     const cityName = this.searchForm.get('location')!.value;
     if (cityName) {
-      // Fetch packages for the selected city
       this.cityService.getPackagesByCity(cityName).subscribe({
         next: (packages) => {
-          this.packages = packages; // Assume 'packages' is an array of available packages
+          this.packages = packages;
         },
         error: (err) => {
           console.error('Error fetching packages:', err);
         },
       });
     } else {
-      this.packages = []; // Clear the packages if no city is selected
+      this.packages = [];
     }
   }
 
   selectCity(city: string) {
     this.searchForm.get('location')!.setValue(city);
-    this.cities = []; // Close the dropdown
-    this.onCitySearch(); // Fetch packages for the selected city
+    this.cities = [];
+    this.onCitySearch();
   }
 
   onSearch() {
@@ -94,5 +100,4 @@ export class IndexComponent implements OnInit {
     const queryParams = { location };
     this.router.navigate(['/search'], { queryParams });
   }
-
 }

@@ -11,17 +11,16 @@
               class="form-control"
               placeholder="New Delhi"
               formControlName="location"
-              
             />
             <ul
               *ngIf="cities && cities.length > 0"
-              class="dropdown-menu show"
+              class="dropdown-menu"
               style="width: 100%; position: absolute; z-index: 1050;"
             >
               <li
                 *ngFor="let city of cities"
                 class="dropdown-item"
-             
+                (click)="selectCity(city)"
               >
                 {{ city }}
               </li>
@@ -37,8 +36,6 @@
             />
           </div>
 
-          <!-- Additional Options -->
-      
           <div class="col-md-6 d-flex align-items-center mt-4">
             <div class="form-check me-3">
               <input
@@ -64,7 +61,6 @@
             </div>
           </div>
 
-          <!-- Search Button -->
           <div class="col-md-12">
             <button type="submit" class="btn w-100 submit_button">Search</button>
           </div>

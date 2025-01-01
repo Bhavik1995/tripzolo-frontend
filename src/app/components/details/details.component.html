@@ -15,7 +15,6 @@
         <strong>Package Cost (Per Guest):</strong> ₹{{package.price?.perPerson | number:'1.0-0'}}
       </p>
       
-      <!-- Guest Count Input -->
       <div class="mb-3">
         <label for="guestCount" class="form-label"><strong>Guest Count:</strong></label>
         <input
@@ -27,11 +26,9 @@
           placeholder="Enter number of guests"
         />
       </div>
-      
-      <!-- Total Cost -->
+    
       <h5>Total Cost: <strong>₹{{ totalCost | number:'1.0-0' }}</strong></h5>
       
-      <!-- Book Now Button -->
       <button
         class="btn mt-3 w-100"
         [disabled]="guestCount <= 0"

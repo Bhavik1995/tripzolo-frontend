@@ -1,6 +1,5 @@
-/* General Styles */
 body {
-  background-color: #f8f9fa; /* Light background for a clean look */
+  background-color: #f8f9fa;
 }
 
 .container-fluid {
@@ -9,7 +8,7 @@ body {
 
 .card {
   border: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -18,9 +17,9 @@ body {
   padding: 30px;
   width: 100%;
   background-image: url('../../../assets/images/bg5.jpg');
-  background-size: cover; /* Ensure the background image covers the whole div */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Prevent repeating the background image */
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat;
 }
 
 label {
@@ -50,7 +49,6 @@ button {
   border-radius: 5px;
 }
 
-/* Navigation Button Styles */
 .btn-outline-primary {
   color: #007bff;
   border-color: #007bff;
@@ -76,13 +74,17 @@ button {
   color: white;
 }
 
-/* Dropdown Menu Styling */
 .dropdown-menu {
-  max-height: 200px;
-  overflow-y: auto;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: block; /* Ensure visibility */
+  position: absolute;
+  z-index: 1050; /* Ensure above other elements */
+  background-color: #fff;
+  width: 100%; /* Align with the input */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow */
+  max-height: 200px; /* Limit height */
+  overflow-y: auto; /* Allow scrolling */
 }
+
 
 .dropdown-item {
   font-size: 14px;
@@ -94,7 +96,6 @@ button {
   background-color: #f1f1f1;
 }
 
-/* Checkbox Styling */
 .form-check-input {
   width: 20px;
   height: 20px;
@@ -106,7 +107,6 @@ button {
   color: #fff;
 }
 
-/* Search Button */
 .btn-primary {
   background-color: #007bff;
   border-color: #007bff;
@@ -117,7 +117,6 @@ button {
   border-color: #004085;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .card-body {
     padding: 15px;
@@ -155,7 +154,6 @@ button {
   }
 }
 
-/* Additional Enhancements */
 .bg-light {
   background: linear-gradient(to right, #f8f9fa, #e9ecef);
 }
@@ -184,7 +182,6 @@ button {
   background-color: #0056b3;
 }
 
-/* Section Styling */
 .destination-section {
   .section-title {
     font-size: 1.5rem;

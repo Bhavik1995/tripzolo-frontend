@@ -4,18 +4,17 @@
   .logo_section {
     img {
       height: 50px;
-      width: auto; /* Maintain aspect ratio */
+      width: auto;
     }
   }
 
-  /* Navbar alignment for responsive behavior */
   .navbar-toggler {
     border: none;
     color: white;
   }
 
   .navbar-collapse {
-    text-align: center; /* Center links in mobile view */
+    text-align: center;
   }
 
   .nav-link {

@@ -20,13 +20,24 @@ export class ReviewComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.packageName = params['packageName'];
-      this.packageCost = params['totalCost'];
-      this.location = params['location'];
-      this.id = params['id'];
-      this.image = params['image'];
-      this.guestCount = params['guestCount'];
+    this.getRouteData();
+  }
+
+  getRouteData(){
+    this.route.queryParams.subscribe(({ 
+      packageName, 
+      totalCost, 
+      location, 
+      id, 
+      image, 
+      guestCount 
+    }) => {
+      this.packageName = packageName;
+      this.packageCost = totalCost;
+      this.location = location;
+      this.id = id;
+      this.image = image;
+      this.guestCount = guestCount;
     });
   }
 

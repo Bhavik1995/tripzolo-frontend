@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +13,20 @@ export class CityService {
 
   getCities(query: string): Observable<string[]> {
     return this.http
-      .get<{ cities: string[] }>(`${this.apiUrl}?q=${query}`)
-      .pipe(map((response) => response.cities));
+      .get<string[]>(`https://tripzolo-backend.vercel.app/api/cities?q=${query}`)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
   }
-
-  getPackagesByCity(city: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}?city=${encodeURIComponent(city)}`);
-}
+  
+  getPackagesByCity(cityName: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}?city=${cityName}`).pipe(
+      catchError((err) => {
+        console.error("Error in getPackagesByCity:", err);
+        return of([]);
+      })
+    );
+  }
 }

@@ -10,9 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class DetailsComponent implements OnInit {
 
   package: any = {};
-  // guestCount: number = 1;
-
-  packageCost: number = 200; // Cost per guest
+  packageCost: number = 200;
   guestCount: number = 0;
   totalCost: number = 0;
   packageName!: string;
@@ -28,7 +26,6 @@ export class DetailsComponent implements OnInit {
     const apiUrl = `https://tripzolo-backend.vercel.app/api/packages/${id}`;
     this.http.get(apiUrl).subscribe((data: any) => {
       this.package = data;
-      console.log(this.package)
     });
   }
 
@@ -41,7 +38,6 @@ export class DetailsComponent implements OnInit {
     this.totalCost = this.guestCount *  this.package.price?.perPerson;
   }
 
-  // Redirect to review page
   redirectToReview(): void {
     this.router.navigate(['/review'], {
       queryParams: { location: this.package?.city,id: this.package?.id, totalCost: this.totalCost, guestCount: this.guestCount, packageName: this.package?.name, image: this.package?.image },

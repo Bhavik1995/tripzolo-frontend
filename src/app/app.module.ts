@@ -7,10 +7,9 @@ import { IndexComponent } from './components/index/index.component';
 import { ListingComponent } from './components/listing/listing.component';
 import { DetailsComponent } from './components/details/details.component';
 import { ReviewComponent } from './components/review/review.component';
-import { MaterialModule } from './material.module';
 import { CdkScrollableModule } from '@angular/cdk/scrolling';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
@@ -37,7 +36,6 @@ import { FooterComponent } from './components/footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // MaterialModule,
     CdkScrollableModule,
     ReactiveFormsModule,
     FormsModule,

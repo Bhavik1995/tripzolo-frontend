@@ -1,7 +1,6 @@
 <div class="container my-5">
   <div class="card shadow-lg">
     <div class="row g-0">
-      <!-- Image Section -->
       <div class="col-md-6">
         <img
           src={{image}}
@@ -10,22 +9,18 @@
         />
       </div>
 
-      <!-- Package Details Section -->
       <div class="col-md-6">
         <div class="card-body">
           <h3 class="card-title mb-4">Selected Package Details</h3>
 
-          <!-- Package Name -->
           <h5 class="fw-bold mb-3">Package Name: <span class="text-secondary">{{packageName}}</span></h5>
 
           <h5 class="fw-bold mb-3">Total Guest: <span class="text-secondary">{{guestCount}}</span></h5>
 
-          <!-- Package Total Cost -->
           <h5 class="fw-bold mb-3">
             Total Cost: <span class="text-success">₹{{packageCost | number:'1.0-0'}}</span>
           </h5>
 
-          <!-- Buttons -->
           <div class="d-flex justify-content-between mt-4">
             <button class="btn btn-outline-secondary px-4" (click)="goBack()">Back</button>
             <button class="btn px-4" (click)="confirmBooking()">Confirm Booking</button>

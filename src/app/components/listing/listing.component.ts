@@ -30,7 +30,6 @@ export class ListingComponent implements OnInit {
     this.http.get(apiUrl, { params }).subscribe({
     next: (data: any) => {
       this.packages = data;
-      console.log(data);
     },
     error: (err) => {
       console.error('Error fetching packages:', err);
@@ -39,8 +38,6 @@ export class ListingComponent implements OnInit {
   }
 
   viewDetails(id: number) {
-
-    // this.router.navigate(['/details', id]);
     const location = this.location;
     this.router.navigate(['/details', { location },id]);
   }
